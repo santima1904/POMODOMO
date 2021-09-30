@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Ejercicio3.3.1</string>
+    <string name="alinear_a_la_derecha">Alinear a la derecha</string>
+    <string name="alinear_a_la_izquierda">Alinear a la izquierda</string>
+</resources>
