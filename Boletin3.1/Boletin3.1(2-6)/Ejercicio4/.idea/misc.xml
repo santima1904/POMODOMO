@@ -4,7 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/ProyectosSanti/POMODOMO/Boletin3.1/Boletin3.1(2-6)/Ejercicio4/app/src/main/res/layout/activity_main.xml" value="0.12771739130434784" />
+<<<<<<< HEAD
         <entry key="..\:/Users/TESTER/Desktop/DAM/Android/POMODOMO/Boletin3.1/Boletin3.1(2-6)/Ejercicio4/app/src/main/res/layout/activity_main.xml" value="0.1793478260869565" />
+=======
+>>>>>>> master
       </map>
     </option>
   </component>
@@ -14,6 +17,7 @@
   <component name="ProjectType">
     <option name="id" value="Android" />
   </component>
+<<<<<<< HEAD
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
@@ -21,4 +25,6 @@
       </ProjectState>
     </option>
   </component>
+=======
+>>>>>>> master
 </project>

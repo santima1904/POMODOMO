@@ -12,9 +12,12 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
+<<<<<<< HEAD
     List<Integer> lista = new ArrayList<>();
     int contador = 0;
 
+=======
+>>>>>>> master
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Button anterior;
@@ -28,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         anterior.setOnClickListener(this);
         siguiente.setOnClickListener(this);
+<<<<<<< HEAD
 
 
         lista.add(R.drawable.diosito);
@@ -35,6 +39,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         lista.add(R.drawable.saboresdelatierra);
         lista.add(R.drawable.daniel);
 
+=======
+>>>>>>> master
     }
 
     @Override
@@ -44,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         imagen = findViewById(R.id.imagen);
 
+<<<<<<< HEAD
         switch (view.getId()){
             case R.id.anterior:
 
@@ -76,4 +83,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+=======
+        List<Integer> lista = new ArrayList<>();
+
+        lista.add(R.drawable.diosito);
+        lista.add(R.drawable.fifa);
+        lista.add(R.drawable.saboresdelatierra);
+        lista.add(R.drawable.daniel);
+
+    }
+>>>>>>> master
 }
