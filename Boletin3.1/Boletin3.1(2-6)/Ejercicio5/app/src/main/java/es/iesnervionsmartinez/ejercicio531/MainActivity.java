@@ -3,11 +3,14 @@ package es.iesnervionsmartinez.ejercicio531;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    TextView text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +29,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        TextView text;
 
         text = findViewById(R.id.text);
 
@@ -34,12 +36,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.mas:
 
-                text.setTextSize(text.getTextSize()+2);
+                text.setTextSize(TypedValue.COMPLEX_UNIT_PX, text.getTextSize()+3);
                 break;
 
             case R.id.menos:
 
-                text.setTextSize(text.getTextSize()-2);
+                text.setTextSize(TypedValue.COMPLEX_UNIT_PX, text.getTextSize()-3);
                 break;
         }
     }
