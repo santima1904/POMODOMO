@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         EditText number1;
         EditText number2;
         TextView result;
-        int idRadio;
         float num1, num2;
 
         group = findViewById(R.id.gruop);

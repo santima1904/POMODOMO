@@ -2,6 +2,7 @@ package es.iesnervion.smartinez.ejercicio132;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -9,6 +10,9 @@ import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.RadioGroup;
+import android.widget.Switch;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -25,7 +29,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         boton.setOnClickListener(this);
 
-
     }
 
     @Override
@@ -36,11 +39,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         CheckBox gigant;
         CheckBox tiny;
         CheckBox red;
+        Switch invisible;
 
         bold = findViewById(R.id.bold);
         gigant = findViewById(R.id.gigant);
         tiny = findViewById(R.id.tiny);
         red = findViewById(R.id.red);
+        invisible = findViewById(R.id.invisible);
 
        if (bold.isChecked()){
 
@@ -73,6 +78,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             text.setTextColor(Color.CYAN);
         }
+        if (invisible.isChecked()){
+
+            text.setVisibility(View.INVISIBLE);
+        }else{
+
+            text.setVisibility(View.VISIBLE);
+        }
 
     }
+
 }
