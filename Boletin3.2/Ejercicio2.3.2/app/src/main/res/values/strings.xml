@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Ejercicio2.3.2</string>
+    <string name="sumar">Sumar</string>
+    <string name="minus">Minus</string>
+    <string name="multiply">Multiply</string>
+    <string name="ok">Ok</string>
+    <string name="el_resultado_es">El resultado es:</string>
+</resources>

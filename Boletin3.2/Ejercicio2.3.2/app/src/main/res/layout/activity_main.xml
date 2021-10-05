@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/number1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="109dp"
+        android:layout_marginEnd="163dp"
+        android:inputType="numberDecimal"
+        app:layout_constraintBottom_toBottomOf="@+id/number2"
+        app:layout_constraintEnd_toStartOf="@+id/number2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/number2" />
+
+    <EditText
+        android:id="@+id/number2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="261dp"
+        android:layout_marginEnd="99dp"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/gruop"
+        android:layout_width="117dp"
+        android:layout_height="451dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="160dp"
+        android:layout_marginBottom="184dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/number1"
+        app:layout_constraintVertical_bias="0.506">
+
+
+        <RadioButton
+            android:id="@+id/sum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="105dp"
+            android:text="@string/sumar"
+            app:layout_constraintStart_toStartOf="@+id/minus"
+            app:layout_constraintTop_toBottomOf="@+id/number1" />
+
+        <RadioButton
+            android:id="@+id/minus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="20dp"
+            android:text="@string/minus"
+            app:layout_constraintBottom_toTopOf="@+id/multiply"
+            app:layout_constraintStart_toStartOf="@+id/multiply"
+            app:layout_constraintTop_toBottomOf="@+id/sum" />
+
+        <RadioButton
+            android:id="@+id/multiply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="30dp"
+            android:text="@string/multiply"
+            app:layout_constraintBottom_toTopOf="@+id/divide"
+            app:layout_constraintStart_toStartOf="@+id/divide"
+            app:layout_constraintTop_toBottomOf="@+id/minus" />
+
+        <RadioButton
+            android:id="@+id/divide"
+            android:layout_width="92dp"
+            android:layout_height="wrap_content"
+            android:text="Divide" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/boton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="44dp"
+        android:text="@string/ok"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="104dp"
+        android:text="@string/el_resultado_es"
+        app:layout_constraintBottom_toTopOf="@+id/boton"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
