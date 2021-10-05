@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Ejercicio1.3.2</string>
+    <string name="the_aubergine_is_sown_in_a_protected_warehouse_in_the_months_of_july_august_to_transplant_in_september_october">The aubergine is sown in a protected warehouse in the months of July-August, to transplant in September-October.</string>
+    <string name="negrita">Negrita</string>
+    <string name="gigante">Gigante</string>
+    <string name="chiquito">Chiquito</string>
+    <string name="rojo">Rojo</string>
+    <string name="ok">Ok</string>
 </resources>

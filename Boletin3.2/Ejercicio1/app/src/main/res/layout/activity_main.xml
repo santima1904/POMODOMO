@@ -6,13 +6,71 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:id="@+id/text"
+        android:layout_width="330dp"
+        android:layout_height="92dp"
+        android:text="@string/the_aubergine_is_sown_in_a_protected_warehouse_in_the_months_of_july_august_to_transplant_in_september_october"
+        android:textColor="@color/teal_200"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.58"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.287" />
+
+    <CheckBox
+        android:id="@+id/bold"
+        android:layout_width="86dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="64dp"
+        android:text="@string/negrita"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/red" />
+
+    <CheckBox
+        android:id="@+id/gigant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="124dp"
+        android:text="@string/gigante"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text" />
+
+    <CheckBox
+        android:id="@+id/tiny"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="72dp"
+        android:text="@string/chiquito"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gigant" />
+
+    <CheckBox
+        android:id="@+id/red"
+        android:layout_width="96dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="124dp"
+        android:layout_marginEnd="64dp"
+        android:text="@string/rojo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text" />
+
+    <Button
+        android:id="@+id/boton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="161dp"
+        android:layout_marginEnd="162dp"
+        android:layout_marginBottom="58dp"
+        android:text="@string/ok"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
