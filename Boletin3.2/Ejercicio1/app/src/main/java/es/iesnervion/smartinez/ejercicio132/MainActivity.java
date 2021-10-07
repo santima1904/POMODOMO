@@ -1,8 +1,6 @@
 package es.iesnervion.smartinez.ejercicio132;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -10,8 +8,6 @@ import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.RadioGroup;
 import android.widget.Switch;
 import android.widget.TextView;
 
