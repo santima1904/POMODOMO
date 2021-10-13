@@ -112,17 +112,93 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.equal:
-
+                text.setText("El resultado es: "+calcularResultado(text.getText().toString()));
                 break;
 
         }
     }
 
     //TODO con metodos clase String
-    private void calcularResultado(String text){
+    private int calcularResultado(String text) {
 
-        int indiceSigno = 0;
+        int indiceSigno = 0, resultado = 0;
+        String numero1, numero2;
 
-         indiceSigno = text.indexOf("+");//Devuelve -1 si no esta, hacer un condicional con eso
+        indiceSigno = text.indexOf("+");
+
+        if (indiceSigno != -1) {
+
+          numero1 = numero1(text, indiceSigno);
+          numero2 = numero2(text, indiceSigno);
+
+          resultado = Integer.parseInt(numero1) + Integer.parseInt(numero2);
+
+        } else {
+            indiceSigno = text.indexOf("-");
+
+            if (indiceSigno != -1) {
+
+                numero1 = numero1(text, indiceSigno);
+                numero2 = numero2(text, indiceSigno);
+
+                resultado = Integer.parseInt(numero1) - Integer.parseInt(numero2);
+            } else {
+                indiceSigno = text.indexOf("*");
+
+                if (indiceSigno != -1) {
+
+                    numero1 = numero1(text, indiceSigno);
+                    numero2 = numero2(text, indiceSigno);
+
+                    resultado = Integer.parseInt(numero1) * Integer.parseInt(numero2);
+                } else {
+
+                    indiceSigno = text.indexOf("/");
+
+                    if (indiceSigno != -1) {
+
+                        numero1 = numero1(text, indiceSigno);
+                        numero2 = numero2(text, indiceSigno);
+
+                        resultado = Integer.parseInt(numero1) / Integer.parseInt(numero2);
+                    }
+                }
+            }
+        }
+        return resultado;
+    }
+
+
+    private String numero1(String texto, int indice){
+        String cadena;
+
+        cadena =  convertirCadena(texto.charAt(indice));
+
+        for (int i = 1;i<=indice;i++){
+
+            cadena = cadena.toString() + convertirCadena(texto.charAt(indice));
+        }
+
+        return cadena;
+    }
+
+    private String numero2(String texto, int indice){
+        String cadena;
+
+        cadena = convertirCadena(texto.charAt(indice));
+
+        for (int i = indice+1 ;i<=texto.length();i++){
+            cadena = cadena + convertirCadena(texto.charAt(indice));
+        }
+        return cadena;
+    }
+
+    private String convertirCadena(char cadena){
+        String numero;
+
+            numero = (String.valueOf(cadena));
+
+
+        return numero;
     }
 }
