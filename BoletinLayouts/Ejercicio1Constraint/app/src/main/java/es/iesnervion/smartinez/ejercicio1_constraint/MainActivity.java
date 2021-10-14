@@ -1,4 +1,4 @@
-package es.iesnervion.smartinez.pruebalayouts;
+package es.iesnervion.smartinez.ejercicio1_constraint;
 
 import androidx.appcompat.app.AppCompatActivity;
 

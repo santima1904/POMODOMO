@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="es.iesnervion.smartinez.pruebalayouts">
+    package="es.iesnervion.smartinez.ejercicio1_constraint">
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_baseline_calculate_24"
-        android:label="CalculadoraLineal"
+        android:label="CalculadoraConstraint"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.PruebaLayouts">
+        android:theme="@style/Theme.Ejercicio1_Constraint">
         <activity
             android:name=".MainActivity"
             android:exported="true">
