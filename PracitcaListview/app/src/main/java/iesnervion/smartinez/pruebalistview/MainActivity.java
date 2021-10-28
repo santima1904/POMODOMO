@@ -2,6 +2,7 @@ package iesnervion.smartinez.pruebalistview;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -50,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
                 //selection.setText(content[position]);
 
                 //Esta forma usa directamente la vista
-                selection.setText((String)parent.getItemAtPosition(position));
+                selection.setText(parent.getItemAtPosition(position).toString());
             }
         });
 
@@ -66,11 +67,44 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public View getView(int position, View convertView, ViewGroup parent){
 
-            View row = super.getView(position, convertView, parent);
-            ImageView icon = (ImageView) row.findViewById(R.id.image_row);
+            View row = convertView;
+            ViewHolder holder;
+            TextView text;
+            ImageView image;
+
+            //Forma con ViewHolder
+            if (row == null){
+                LayoutInflater inflater = getLayoutInflater();
+                row=inflater.inflate(R.layout.list_layout, parent, false);
+
+                text = (TextView) row.findViewById(R.id.text_row);
+                image = (ImageView) row.findViewById(R.id.image_row);
+                holder = new ViewHolder(text, image);
+                row.setTag(holder);
+            }else{
+                holder = (ViewHolder) row.getTag();
+            }
+
+            holder.getText().setText(content[position].getNombre());
+            holder.getImage().setImageResource(content[position].getImagen());
+
+            //Forma con inflate
+            /*
+            View row = convertView;
+
+            if (row == null){
+                LayoutInflater inflater = getLayoutInflater();
+                row=inflater.inflate(R.layout.list_layout, parent, false);
+            }
+
+             */
+
+            //Forma para hacerlo con ArrayAdapter
+            //View row = super.getView(position, convertView, parent);
+            //ImageView icon = (ImageView) row.findViewById(R.id.image_row);
 
             //Forma con un array de objetos
-            icon.setImageResource(content[position].getImagen());
+            //icon.setImageResource(content[position].getImagen());
 
             /*
             //Forma con una array de String
@@ -92,12 +126,29 @@ public class MainActivity extends AppCompatActivity {
                     break;
 
             }
-
              */
 
             return row;
         }
 
+    }
+
+    class ViewHolder{
+        TextView text;
+        ImageView image;
+
+        public ViewHolder(TextView text, ImageView image) {
+            this.text = text;
+            this.image = image;
+        }
+
+        public TextView getText() {
+            return text;
+        }
+
+        public ImageView getImage() {
+            return image;
+        }
     }
 
 }
