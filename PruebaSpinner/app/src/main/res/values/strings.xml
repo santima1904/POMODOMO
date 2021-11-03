@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">PruebaSpinner</string>
+    <string-array name="verduras">
+        <item>Berenjena</item>
+        <item>Cebolla</item>
+        <item>Patata</item>
+        <item>Puerro</item>
+    </string-array>
+</resources>
