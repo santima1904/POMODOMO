@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">ExamenPDMO1</string>
+    <string name="examen_android_1">Examen Android 1</string>
+    <string name="coches">Coches</string>
+    <string name="motos">Motos</string>
+    <string name="imagen_coche_izquierda">Imagen coche izquierda</string>
+    <string name="imagen_coche_derecha">Imagen coche derecha</string>
+    <string name="imagen_coche_doble">Imagen coche doble</string>
+    <string name="imagen_moto_izquierda">Imagen moto izquierda</string>
+    <string name="imagen_moto_derecha">Imagen moto derecha</string>
+    <string name="imagen_moto_doble">Imagen moto doble</string>
+</resources>
