@@ -29,7 +29,7 @@ import es.iesnervion.smartinez.examenpdmo1.clasesBasicas.Car;
     Le dejo lo que tengo hecho, aunque no este acabado. Si ejecuta verá la parte primera del ejercicio.
     He comentado el setAdapter para que pueda ejecutar sin que salga una excepcion.
  */
-public class MainActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
+public class MainActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener, RadioGroup.OnCheckedChangeListener {
 
     Car car1 = new Car("Audi A8", R.drawable.audi_a8);
     Car car2 = new Car("BMW M3", R.drawable.bmw_m3);
@@ -45,19 +45,49 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
     Bike bike4 = new Bike("Yamaha R6", R.drawable.yamaha_r6);
 
     List<Object> vehicles = new ArrayList<>();
+    CheckBox checkCoches, checkMotos;
+    RadioGroup radioCars, radioMotos;
+    ListView listVehicles;
+    int layoutCoches = 0;
+    int layoutMotos = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Instanciar las vistas
-        CheckBox checkCoches, checkMotos;
-        RadioGroup radioCars, radioMotos;
-        RadioButton radioCocheIzq, radioCocheDer, radioCocheDouble, radioMotoIzq, radioMotoDer, radioMotoDouble;
-        ListView listVehicles;
+        //Crear los objetos vistas
+        checkCoches = findViewById(R.id.check_car);
+        checkMotos = findViewById(R.id.check_moto);
+        radioCars = findViewById(R.id.radiogroup_cars);
+        radioMotos = findViewById(R.id.radiogroup_motos);
+        listVehicles = findViewById(R.id.list_vehicles);
 
-        //Anhadir los objetos creados a la lista
+        //Listeners
+        checkCoches.setOnCheckedChangeListener(this);
+        checkMotos.setOnCheckedChangeListener(this);
+        radioCars.setOnCheckedChangeListener(this);
+        radioMotos.setOnCheckedChangeListener(this);
+    }
+
+    private void rellenarListadoCoches(){
+        vehicles.add(car1);
+        vehicles.add(car2);
+        vehicles.add(car3);
+        vehicles.add(car4);
+        vehicles.add(car5);
+        vehicles.add(car6);
+        vehicles.add(car7);
+    }
+
+    private void rellenarListadoMotos(){
+        vehicles.add(bike1);
+        vehicles.add(bike2);
+        vehicles.add(bike3);
+        vehicles.add(bike4);
+    }
+
+    private void rellenarListadoVehiculos(){
         vehicles.add (bike1);
         vehicles.add (car1);
         vehicles.add (car2);
@@ -69,51 +99,37 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         vehicles.add (car6);
         vehicles.add (car7);
         vehicles.add (bike4);
-
-        //Crear los objetos vistas
-        checkCoches = findViewById(R.id.check_car);
-        checkMotos = findViewById(R.id.check_moto);
-        radioCars = findViewById(R.id.radiogroup_cars);
-        radioMotos = findViewById(R.id.radiogroup_motos);
-        radioCocheDer = findViewById(R.id.radio_car_right);
-        radioCocheIzq = findViewById(R.id.radio_car_left);
-        radioCocheDouble = findViewById(R.id.radio_car_double);
-        radioMotoDer = findViewById(R.id.radio_moto_right);
-        radioMotoIzq = findViewById(R.id.radio_moto_left);
-        radioMotoDouble = findViewById(R.id.radio_moto_double);
-        listVehicles = findViewById(R.id.list_vehicles);
-
-        //Listeners
-        checkCoches.setOnCheckedChangeListener(this);
-        checkMotos.setOnCheckedChangeListener(this);
-        radioCocheIzq.setOnCheckedChangeListener(this);
-        radioCocheDer.setOnCheckedChangeListener(this);
-        radioCocheDouble.setOnCheckedChangeListener(this);
-        radioMotoIzq.setOnCheckedChangeListener(this);
-        radioMotoDer.setOnCheckedChangeListener(this);
-        radioMotoDouble.setOnCheckedChangeListener(this);
-
-        //Adapter
-        //listVehicles.setAdapter(new IconicAdapter<Object>(this, vehicles));
-
     }
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
+        vehicles.clear();
+        if (checkCoches.isChecked()&&checkMotos.isChecked()){
+            rellenarListadoVehiculos();
+        }else if (checkCoches.isChecked()){
+            rellenarListadoCoches();
+        }else if (checkMotos.isChecked()){
+            rellenarListadoMotos();
+        }
     }
 
-    /**
-     * Clase para crear un adaptador personalizado
-     * @param <Object>
-     */
-    class IconicAdapter<Object> extends BaseAdapter {
+    @Override
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+    if (group.getId() == R.id.radiogroup_cars){
+        switch (checkedId){
+            case R.id.radio_car_right:
+                layoutCoches = R.layout.car_row_right;
+        }
+    }
+    }
+
+
+    class IconicAdapter extends BaseAdapter {
 
         Context context;
-        List<Object> lista;
+        List<Car> lista;
 
-
-        public IconicAdapter(Context context, List<Object> lista) {
+        public IconicAdapter(Context context, List<Car> lista) {
             this.context = context;
             this.lista = lista;
 
@@ -131,74 +147,13 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
 
         @Override
         public long getItemId(int position) {
-            return 0;
+            return position;
         }
 
-//         Metodo de prueba mientras intentaba solucionar el problema
-//        /**
-//         * Descripcion: Metodo para obtener el layout adecuado a la seleccion del usuario
-//         *
-//         * @return int
-//         */
-//        private int getLayoutSeleccion(){
-//            int layout = 0;
-//
-//            switch (radioSeleccionado){
-//                case R.id.radio_car_right:
-//                    layout = R.layout.car_row_right;
-//                    break;
-//
-//                case R.id.radio_car_left:
-//                    layout = R.layout.car_row_left;
-//                    break;
-//
-//                case R.id.radio_car_double:
-//                    layout = R.layout.car_row_double;
-//                    break;
-//
-//                case R.id.radio_moto_right:
-//                    layout = R.layout.bike_row_right;
-//                    break;
-//
-//                case R.id.radio_moto_left:
-//                    layout = R.layout.bike_row_left;
-//                    break;
-//
-//                case R.id.radio_moto_double:
-//                    layout = R.layout.bike_row_double;
-//                    break;
-//            }
-//            return layout;
-//        }
-
-
-        /*
-        Este método cambiaría en algunas condiciones y en el primer parámetro del inflate, está puesto de prueba
-         */
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             View row = convertView;
-            ImageView image;
-            TextView text;
-            ViewHolderImageText holder;
 
-            if (row == null){
-                LayoutInflater inflater = getLayoutInflater();
-
-                row = inflater.inflate(R.layout.car_row_double, parent, false);
-                image = findViewById(R.id.image);
-                text = findViewById(R.id.name);
-
-                holder = new ViewHolderImageText(image, text);
-                row.setTag(holder);
-            }else{
-                holder = (ViewHolderImageText) row.getTag();
-            }
-
-            if (lista.get(position) instanceof Car) {
-                holder.getImage().setImageResource(((Car) lista.get(position)).getCarImage());
-                holder.getText().setText(((Car) lista.get(position)).getCarName());
-            }
             return row;
         }
     }
