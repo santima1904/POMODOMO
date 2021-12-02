@@ -11,9 +11,31 @@ import es.iesnervion.smartinez.practica_android_1t.clasesBasicas.Persona;
 
 public class MiViewModel extends ViewModel {
     //Propiedad pública
-    public List<Empresa> listadoEmpresas = rellenarListadoEmpresa();
+    private List<Empresa> listadoEmpresas;
+    private EmpresaTecnologica empresaSeleccionada;
 
-    //Métodos
+    public MiViewModel() {
+        this.listadoEmpresas = rellenarListadoEmpresa();
+        //this.empresaSeleccionada = new EmpresaTecnologica();
+    }
+
+    public List<Empresa> getListadoEmpresas() {
+        return listadoEmpresas;
+    }
+
+    public void setListadoEmpresas(List<Empresa> listadoEmpresas) {
+        this.listadoEmpresas = listadoEmpresas;
+    }
+
+    public EmpresaTecnologica getEmpresaSeleccionada() {
+        return empresaSeleccionada;
+    }
+
+    public void setEmpresaSeleccionada(EmpresaTecnologica empresaSeleccionada) {
+        this.empresaSeleccionada = empresaSeleccionada;
+    }
+
+//Métodos
     /**
      * Cabecera: private List(Empresa) rellenarListadoEmpresa()
      * Descripción: Método para crear y rellenar un listado de Empresas
@@ -30,6 +52,13 @@ public class MiViewModel extends ViewModel {
         listaEmpresas.add(new EmpresaNoTecnologica("ToyRus", "058"));
         listaEmpresas.add(new EmpresaNoTecnologica("Cruzcampo", "018"));
         listaEmpresas.add(new EmpresaNoTecnologica("Game", "065"));
+        listaEmpresas.add(new EmpresaTecnologica("Empresa ejemplo pa rellenar", R.drawable.nofoto, "https://www.webejemplonopulsar.es/", "ejemplo@nopulsesesto.es",
+                "C/ No tenemos oficina porque es un ejemplo","Dios", " 902930363", crearListadoPersonasContacto()));
+        listaEmpresas.add(new EmpresaTecnologica("Empresa ejemplo pa rellenar", R.drawable.nofoto, "https://www.webejemplonopulsar.es/", "ejemplo@nopulsesesto.es",
+                "C/ No tenemos oficina porque es un ejemplo","Dios", " 902930363", crearListadoPersonasContacto()));
+        listaEmpresas.add(new EmpresaTecnologica("Empresa ejemplo pa rellenar", R.drawable.nofoto, "https://www.webejemplonopulsar.es/", "ejemplo@nopulsesesto.es",
+                "C/ No tenemos oficina porque es un ejemplo","Dios", " 902930363", crearListadoPersonasContacto()));
+
 
         return listaEmpresas;
     }

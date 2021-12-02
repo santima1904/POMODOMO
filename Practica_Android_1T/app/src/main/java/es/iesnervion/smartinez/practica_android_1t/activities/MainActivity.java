@@ -1,22 +1,34 @@
-package es.iesnervion.smartinez.practica_android_1t;
+package es.iesnervion.smartinez.practica_android_1t.activities;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import java.io.Serializable;
+
+import es.iesnervion.smartinez.practica_android_1t.R;
 import es.iesnervion.smartinez.practica_android_1t.clasesBasicas.EmpresaNoTecnologica;
 import es.iesnervion.smartinez.practica_android_1t.clasesBasicas.EmpresaTecnologica;
 import es.iesnervion.smartinez.practica_android_1t.viewModel.MiViewModel;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener{
 
     MiViewModel miViewModel;
     ListView listView;
@@ -28,7 +40,20 @@ public class MainActivity extends AppCompatActivity {
         miViewModel = new ViewModelProvider(this).get(MiViewModel.class);
         listView = findViewById(R.id.listEmpresas);
         listView.setAdapter(new IconicAdapter(this));
+        listView.setOnItemClickListener(this);
+
     }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        if (parent.getItemAtPosition(position) instanceof EmpresaTecnologica) {
+            miViewModel.setEmpresaSeleccionada((EmpresaTecnologica) parent.getItemAtPosition(position));
+            Intent intent = new Intent(view.getContext(), EmpresaActivity.class);
+            intent.putExtra("empresa", miViewModel.getEmpresaSeleccionada());
+            startActivity(intent);
+        }
+    }
+
 
     class IconicAdapter extends BaseAdapter{
 
@@ -57,12 +82,12 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            return miViewModel.listadoEmpresas.size();
+            return miViewModel.getListadoEmpresas().size();
         }
 
         @Override
         public Object getItem(int position) {
-            return miViewModel.listadoEmpresas.get(position);
+            return miViewModel.getListadoEmpresas().get(position);
         }
 
         @Override

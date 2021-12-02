@@ -1,10 +1,11 @@
 package es.iesnervion.smartinez.practica_android_1t.clasesBasicas;
 
+import java.io.Serializable;
 import java.util.List;
 
 import es.iesnervion.smartinez.practica_android_1t.R;
 
-public class EmpresaTecnologica extends Empresa {
+public class EmpresaTecnologica extends Empresa implements Serializable {
 
     //Atributos
     private int logo;
@@ -95,5 +96,18 @@ public class EmpresaTecnologica extends Empresa {
 
     public void setPersonasContacto(List<Persona> personasContacto) {
         this.personasContacto = personasContacto;
+    }
+
+    @Override
+    public String toString() {
+        return "EmpresaTecnologica{" +
+                "logo=" + logo +
+                ", web='" + web + '\'' +
+                ", mailContacto='" + mailContacto + '\'' +
+                ", localizacion='" + localizacion + '\'' +
+                ", direccion='" + direccion + '\'' +
+                ", telefonoContacto='" + telefonoContacto + '\'' +
+                ", personasContacto=" + personasContacto +
+                '}';
     }
 }
