@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Practica_Android_1T">
         <activity
+            android:name=".activities.PersonasActivity"
+            android:exported="true" />
+        <activity
             android:name=".activities.EmpresaActivity"
             android:exported="true" />
         <activity
