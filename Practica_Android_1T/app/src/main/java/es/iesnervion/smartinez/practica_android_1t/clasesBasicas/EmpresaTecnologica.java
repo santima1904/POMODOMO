@@ -1,11 +1,13 @@
 package es.iesnervion.smartinez.practica_android_1t.clasesBasicas;
 
-import java.io.Serializable;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable;
 
+import java.util.ArrayList;
+import java.util.List;
 import es.iesnervion.smartinez.practica_android_1t.R;
 
-public class EmpresaTecnologica extends Empresa implements Serializable {
+public class EmpresaTecnologica extends Empresa implements Parcelable {
 
     //Atributos
     private int logo;
@@ -14,11 +16,11 @@ public class EmpresaTecnologica extends Empresa implements Serializable {
     private String localizacion;
     private String direccion;
     private String telefonoContacto;
-    private List<Persona> personasContacto;
+    private ArrayList<Persona> personasContacto;
 
     //Constructor
     //Con parámetros
-    public EmpresaTecnologica(String nombre, int logo, String web, String mailContacto, String localizacion, String direccion, String telefonoContacto, List<Persona> personasContacto) {
+    public EmpresaTecnologica(String nombre, int logo, String web, String mailContacto, String localizacion, String direccion, String telefonoContacto, ArrayList<Persona> personasContacto) {
         super(nombre);
         this.logo = logo;
         this.web = web;
@@ -40,6 +42,29 @@ public class EmpresaTecnologica extends Empresa implements Serializable {
         this.telefonoContacto = " ";
         this.personasContacto = null;
     }
+
+    protected EmpresaTecnologica(Parcel in) {
+        setNombre(in.readString());
+        logo = in.readInt();
+        web = in.readString();
+        mailContacto = in.readString();
+        localizacion = in.readString();
+        direccion = in.readString();
+        telefonoContacto = in.readString();
+        personasContacto = in.readArrayList(getClass().getClassLoader());
+    }
+
+    public static final Creator<EmpresaTecnologica> CREATOR = new Creator<EmpresaTecnologica>() {
+        @Override
+        public EmpresaTecnologica createFromParcel(Parcel in) {
+            return new EmpresaTecnologica(in);
+        }
+
+        @Override
+        public EmpresaTecnologica[] newArray(int size) {
+            return new EmpresaTecnologica[size];
+        }
+    };
 
     //Getters and setters
     public int getLogo() {
@@ -90,11 +115,11 @@ public class EmpresaTecnologica extends Empresa implements Serializable {
         this.telefonoContacto = telefonoContacto;
     }
 
-    public List<Persona> getPersonasContacto() {
+    public ArrayList<Persona> getPersonasContacto() {
         return personasContacto;
     }
 
-    public void setPersonasContacto(List<Persona> personasContacto) {
+    public void setPersonasContacto(ArrayList<Persona> personasContacto) {
         this.personasContacto = personasContacto;
     }
 
@@ -109,5 +134,22 @@ public class EmpresaTecnologica extends Empresa implements Serializable {
                 ", telefonoContacto='" + telefonoContacto + '\'' +
                 ", personasContacto=" + personasContacto +
                 '}';
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(getNombre());
+        dest.writeInt(logo);
+        dest.writeString(web);
+        dest.writeString(mailContacto);
+        dest.writeString(localizacion);
+        dest.writeString(direccion);
+        dest.writeString(telefonoContacto);
+        dest.writeList(personasContacto);
     }
 }

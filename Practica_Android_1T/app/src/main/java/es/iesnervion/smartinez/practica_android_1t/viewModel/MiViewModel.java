@@ -69,8 +69,8 @@ public class MiViewModel extends ViewModel {
      *
      * @return List(Persona)
      */
-    private List<Persona> crearListadoPersonasContacto(){
-        List<Persona> listadoPersonas = new ArrayList<>();
+    private ArrayList<Persona> crearListadoPersonasContacto(){
+        ArrayList<Persona> listadoPersonas = new ArrayList<>();
         listadoPersonas.add(new Persona("Pepe", "Sánchez", "987654321", "Jefazo", "pepitosan27@gmail.com"));
         return listadoPersonas;
     }

@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         listView = findViewById(R.id.listEmpresas);
         listView.setAdapter(new IconicAdapter(this));
         listView.setOnItemClickListener(this);
-
     }
 
     @Override
@@ -53,7 +52,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             startActivity(intent);
         }
     }
-
 
     class IconicAdapter extends BaseAdapter{
 

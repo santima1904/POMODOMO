@@ -1,6 +1,9 @@
 package es.iesnervion.smartinez.practica_android_1t.clasesBasicas;
 
-public class Persona {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Persona implements Parcelable {
     //Atributos
     private String nombre;
     private String apellidos;
@@ -26,6 +29,26 @@ public class Persona {
         this.cargo = " ";
         this.mail = " ";
     }
+
+    protected Persona(Parcel in) {
+        nombre = in.readString();
+        apellidos = in.readString();
+        telefono = in.readString();
+        cargo = in.readString();
+        mail = in.readString();
+    }
+
+    public static final Creator<Persona> CREATOR = new Creator<Persona>() {
+        @Override
+        public Persona createFromParcel(Parcel in) {
+            return new Persona(in);
+        }
+
+        @Override
+        public Persona[] newArray(int size) {
+            return new Persona[size];
+        }
+    };
 
     //Getters and setters
     public String getNombre() {
@@ -66,5 +89,19 @@ public class Persona {
 
     public void setMail(String mail) {
         this.mail = mail;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(nombre);
+        dest.writeString(apellidos);
+        dest.writeString(telefono);
+        dest.writeString(cargo);
+        dest.writeString(mail);
     }
 }

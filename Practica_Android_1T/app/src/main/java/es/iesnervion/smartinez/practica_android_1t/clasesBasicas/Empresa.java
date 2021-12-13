@@ -1,8 +1,7 @@
 package es.iesnervion.smartinez.practica_android_1t.clasesBasicas;
 
-import java.io.Serializable;
 
-public class Empresa implements Serializable {
+public class Empresa {
     //Atributos
     private String nombre;
 
@@ -32,4 +31,5 @@ public class Empresa implements Serializable {
                 "nombre='" + nombre + '\'' +
                 '}';
     }
+
 }
