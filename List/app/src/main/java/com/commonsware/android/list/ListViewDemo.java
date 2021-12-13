@@ -30,7 +30,7 @@ public class ListViewDemo extends ListActivity {
           "etiam", "vel", "erat", "placerat", "ante",
           "porttitor", "sodales", "pellentesque", "augue", "purus"};
   
-  @Override
+
   public void onCreate(Bundle icicle) {
     super.onCreate(icicle);
     setContentView(R.layout.main);

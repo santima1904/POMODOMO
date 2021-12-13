@@ -16,9 +16,6 @@ import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     Verdura [] verduras = {new Verdura("Berenjena", R.drawable.berenjena), new Verdura("Cebolla", R.drawable.cebolla),
