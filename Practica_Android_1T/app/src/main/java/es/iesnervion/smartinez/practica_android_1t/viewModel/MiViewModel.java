@@ -45,20 +45,19 @@ public class MiViewModel extends ViewModel {
     private List<Empresa> rellenarListadoEmpresa(){
         List<Empresa> listaEmpresas = new ArrayList<>();
         listaEmpresas.add(new EmpresaTecnologica("Everis", R.drawable.everis, "https://es.nttdata.com", "everisbusines@gmail.com",
-                "C/ Gonzalo Jiménez de Quesada n2º pl. 7ª","Patricio Mapelli", "954660631", crearListadoPersonasContacto()));
+                "37.391441607244616, -6.010462061741051","C/ Gonzalo Jiménez de Quesada n2º pl. 7ª", "954660631", crearListadoPersonasContacto()));
         listaEmpresas.add(new EmpresaTecnologica("Synergia Soluciones Tecnologicas", R.drawable.synergia, "https://www.synergiasoluciones.es/", "contacto@synergiasoluciones.es",
-                "C/ Fortuna, 1, Edificio Nuevo Tixe Oficina 6","Lope de Vega", " 902930363", crearListadoPersonasContacto()));
+                "37.308670917533384, -5.9413008883907406","C/ Fortuna, 1, Edificio Nuevo Tixe Oficina 6", " 902930363", crearListadoPersonasContacto()));
         listaEmpresas.add(new EmpresaNoTecnologica("Lidl", "034"));
         listaEmpresas.add(new EmpresaNoTecnologica("ToyRus", "058"));
         listaEmpresas.add(new EmpresaNoTecnologica("Cruzcampo", "018"));
         listaEmpresas.add(new EmpresaNoTecnologica("Game", "065"));
         listaEmpresas.add(new EmpresaTecnologica("Empresa ejemplo pa rellenar", R.drawable.nofoto, "https://www.webejemplonopulsar.es/", "ejemplo@nopulsesesto.es",
-                "C/ No tenemos oficina porque es un ejemplo","Dios", " 902930363", crearListadoPersonasContacto()));
+                "0,0","C/ No tenemos oficina porque es un ejemplo", " 902930363", crearListadoPersonasContacto()));
         listaEmpresas.add(new EmpresaTecnologica("Empresa ejemplo pa rellenar", R.drawable.nofoto, "https://www.webejemplonopulsar.es/", "ejemplo@nopulsesesto.es",
-                "C/ No tenemos oficina porque es un ejemplo","Dios", " 902930363", crearListadoPersonasContacto()));
+                "0,0","C/ No tenemos oficina porque es un ejemplo", " 902930363", crearListadoPersonasContacto()));
         listaEmpresas.add(new EmpresaTecnologica("Empresa ejemplo pa rellenar", R.drawable.nofoto, "https://www.webejemplonopulsar.es/", "ejemplo@nopulsesesto.es",
-                "C/ No tenemos oficina porque es un ejemplo","Dios", " 902930363", crearListadoPersonasContacto()));
-
+                "0,0","C/ No tenemos oficina porque es un ejemplo", " 902930363", crearListadoPersonasContacto()));
 
         return listaEmpresas;
     }
@@ -72,6 +71,8 @@ public class MiViewModel extends ViewModel {
     private ArrayList<Persona> crearListadoPersonasContacto(){
         ArrayList<Persona> listadoPersonas = new ArrayList<>();
         listadoPersonas.add(new Persona("Pepe", "Sánchez", "987654321", "Jefazo", "pepitosan27@gmail.com"));
+        listadoPersonas.add(new Persona("Eduardo", "Lopez", "987654321", "Becario", "edulopz4@gmail.com"));
+        listadoPersonas.add(new Persona("Herminia", "Nuñez", "34567456", "Lleva el cafe", "herminu86@gmail.com"));
         return listadoPersonas;
     }
 }

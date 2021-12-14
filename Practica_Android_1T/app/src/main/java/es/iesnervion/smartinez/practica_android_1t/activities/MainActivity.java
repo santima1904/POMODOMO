@@ -1,29 +1,23 @@
 package es.iesnervion.smartinez.practica_android_1t.activities;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
-
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.BaseAdapter;
+import android.widget.Filter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-
-import java.io.Serializable;
-
 import es.iesnervion.smartinez.practica_android_1t.R;
+import es.iesnervion.smartinez.practica_android_1t.clasesBasicas.Empresa;
 import es.iesnervion.smartinez.practica_android_1t.clasesBasicas.EmpresaNoTecnologica;
 import es.iesnervion.smartinez.practica_android_1t.clasesBasicas.EmpresaTecnologica;
 import es.iesnervion.smartinez.practica_android_1t.viewModel.MiViewModel;
@@ -32,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     MiViewModel miViewModel;
     ListView listView;
+    AutoCompleteTextView autocompletex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +36,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         listView = findViewById(R.id.listEmpresas);
         listView.setAdapter(new IconicAdapter(this));
         listView.setOnItemClickListener(this);
+        autocompletex = findViewById(R.id.editFiltro);
+        IconicAdapter<Empresa> adapter = new IconicAdapter<>(this);
+        //autocompletex.setAdapter(adapter);
     }
 
     @Override
@@ -53,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
     }
 
-    class IconicAdapter extends BaseAdapter{
+    class IconicAdapter <T> extends BaseAdapter{
 
         Context contextAdapter;
 
@@ -151,6 +149,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
             return row;
         }
+
     }
 
     class ViewHolderTecnologica{

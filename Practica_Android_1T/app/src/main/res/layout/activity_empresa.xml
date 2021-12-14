@@ -8,6 +8,7 @@
     tools:context=".activities.EmpresaActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1">
@@ -18,6 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="150dp"
             android:text="nombre"
+            android:textSize="35dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -25,87 +27,147 @@
 
         <ImageView
             android:id="@+id/logoEmpresa"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:src="@drawable/nofoto"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/nombre"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/black"
+            app:layout_constraintTop_toBottomOf="@+id/logoEmpresa"
+            tools:layout_editor_absoluteX="12dp" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@color/black"
-        />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="3">
+        android:layout_weight="3"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/web"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="72dp"
-            android:text="web"
-            app:layout_constraintEnd_toStartOf="@+id/guideline5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:orientation="horizontal"
+            android:layout_marginBottom="20dp">
 
-        <TextView
-            android:id="@+id/mail"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/web"
+                android:layout_marginEnd="10dp"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/web"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="web"
+                android:textSize="15dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="50dp"
-            android:text="mail"
-            app:layout_constraintEnd_toStartOf="@+id/guideline5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/web" />
+            android:orientation="horizontal"
+            android:layout_marginBottom="20dp">
 
-        <TextView
-            android:id="@+id/direccion"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Localización:"
+                android:layout_marginEnd="10dp"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/localizacion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="localizacion"
+                android:textSize="15dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="72dp"
-            android:text="direccion"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guideline5"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:orientation="horizontal"
+            android:layout_marginBottom="20dp">
 
-        <TextView
-            android:id="@+id/telefono"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mail"
+                android:layout_marginEnd="10dp"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/mail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="mail"
+                android:textSize="15dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:text="telefono"
-            app:layout_constraintEnd_toStartOf="@+id/guideline5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mail" />
+            android:orientation="horizontal"
+            android:layout_marginBottom="20dp">
 
-        <TextView
-            android:id="@+id/localizacion"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/direcci_n"
+                android:layout_marginEnd="10dp"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/direccion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="direccion"
+                android:textSize="15dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="50dp"
-            android:text="localizacion"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/telefono" />
+            android:orientation="horizontal"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tel_fono"
+                android:layout_marginEnd="10dp"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/telefono"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="telefono"
+                android:textSize="15dp"/>
+
+        </LinearLayout>
+
 
         <Button
             android:id="@+id/personasContactos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guideline5"
-            app:layout_constraintTop_toBottomOf="@+id/direccion" />
+            android:text="Personas de contacto"/>
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline5"
@@ -114,8 +176,7 @@
             android:orientation="vertical"
             app:layout_constraintGuide_begin="257dp" />
 
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
 
 </LinearLayout>

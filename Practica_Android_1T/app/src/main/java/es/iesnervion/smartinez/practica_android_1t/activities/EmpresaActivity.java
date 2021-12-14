@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import es.iesnervion.smartinez.practica_android_1t.R;
@@ -15,7 +16,8 @@ import es.iesnervion.smartinez.practica_android_1t.clasesBasicas.EmpresaTecnolog
 
 public class EmpresaActivity extends AppCompatActivity implements View.OnClickListener {
 
-    TextView nombre, web, mail, localizacion, direccion, telefono;
+    TextView nombre, mail, web, localizacion ;
+    EditText direccion, telefono;
     ImageView logo;
     Button personasContactos;
     EmpresaTecnologica empresaTecnologica;
@@ -87,7 +89,7 @@ public class EmpresaActivity extends AppCompatActivity implements View.OnClickLi
                 break;
 
             case R.id.localizacion:
-                showMap(Uri.parse("geo:0, 0?q="+empresaTecnologica.getLocalizacion()));
+                showMap(Uri.parse("geo:"+empresaTecnologica.getLocalizacion()));
                 break;
 
             case R.id.personasContactos:
