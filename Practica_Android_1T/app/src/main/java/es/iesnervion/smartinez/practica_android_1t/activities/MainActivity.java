@@ -13,16 +13,22 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.BaseAdapter;
 import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+
 import es.iesnervion.smartinez.practica_android_1t.R;
 import es.iesnervion.smartinez.practica_android_1t.clasesBasicas.Empresa;
 import es.iesnervion.smartinez.practica_android_1t.clasesBasicas.EmpresaNoTecnologica;
 import es.iesnervion.smartinez.practica_android_1t.clasesBasicas.EmpresaTecnologica;
 import es.iesnervion.smartinez.practica_android_1t.viewModel.MiViewModel;
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener{
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     MiViewModel miViewModel;
     ListView listView;
@@ -34,11 +40,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         setContentView(R.layout.activity_main);
         miViewModel = new ViewModelProvider(this).get(MiViewModel.class);
         listView = findViewById(R.id.listEmpresas);
-        listView.setAdapter(new IconicAdapter(this));
+        IconicAdapter <Empresa> adapter = new IconicAdapter <Empresa>(this, miViewModel.getListadoEmpresas());
+        IconicAdapterFiltrar <Empresa> adapterFiltrar = new IconicAdapterFiltrar<>(this, miViewModel.getListadoEmpresas());
+        listView.setAdapter(adapter);
         listView.setOnItemClickListener(this);
         autocompletex = findViewById(R.id.editFiltro);
-        IconicAdapter<Empresa> adapter = new IconicAdapter<>(this);
-        //autocompletex.setAdapter(adapter);
+        autocompletex.setOnItemClickListener(this);
+        autocompletex.setAdapter(adapterFiltrar);
+
     }
 
     @Override
@@ -54,9 +63,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     class IconicAdapter <T> extends BaseAdapter{
 
         Context contextAdapter;
+        List<Empresa> listadoEmpresas;
 
-        public IconicAdapter(Context contextAdapter) {
+        public IconicAdapter(Context contextAdapter, List<Empresa> listadoEmpresas) {
             this.contextAdapter = contextAdapter;
+            this.listadoEmpresas = listadoEmpresas;
         }
 
         @Override
@@ -78,12 +89,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         @Override
         public int getCount() {
-            return miViewModel.getListadoEmpresas().size();
+            return listadoEmpresas.size();
         }
 
         @Override
         public Object getItem(int position) {
-            return miViewModel.getListadoEmpresas().get(position);
+            return listadoEmpresas.get(position);
         }
 
         @Override
@@ -146,10 +157,104 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     viewHolderTecnologica.getLogo().setImageResource(((EmpresaTecnologica)(getItem(position))).getLogo());
                 }
             }
+            notifyDataSetChanged();
+
+            return row;
+        }
+    }
+
+    class IconicAdapterFiltrar <T> extends BaseAdapter implements Filterable{
+
+        Context contextAdapter;
+        List<Empresa> listadoEmpresas,empresaList, suggestions;
+
+        public IconicAdapterFiltrar(Context contextAdapter, List<Empresa> listadoEmpresas) {
+            this.contextAdapter = contextAdapter;
+            this.listadoEmpresas = listadoEmpresas;
+            this.empresaList = new ArrayList<>(listadoEmpresas);
+            this.suggestions = new ArrayList<>();
+        }
+
+        @Override
+        public int getCount() {
+            return listadoEmpresas.size();
+        }
+
+        @Override
+        public Object getItem(int i) {
+            return listadoEmpresas.get(i);
+        }
+
+        @Override
+        public long getItemId(int i) {
+            return 0;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            View row = convertView;
+            TextView nombre;
+            ViewHolderNombreFiltro viewHolderNombreFiltro;
+
+            if (row == null) {
+                LayoutInflater inflater = getLayoutInflater();
+                row = inflater.inflate(R.layout.layout_filtro, parent, false);
+
+                nombre = (TextView) row.findViewById(R.id.nombre_filtro);
+
+                viewHolderNombreFiltro = new ViewHolderNombreFiltro(nombre);
+                row.setTag(viewHolderNombreFiltro);
+
+                viewHolderNombreFiltro.getNombre().setText(((Empresa)getItem(position)).getNombre());
+            } else {
+
+                viewHolderNombreFiltro = (ViewHolderNombreFiltro) row.getTag();
+                viewHolderNombreFiltro.getNombre().setText(((Empresa) (getItem(position))).getNombre());
+            }
 
             return row;
         }
 
+        @Override
+        public Filter getFilter() {
+            return empresasFilter;
+        }
+
+        Filter empresasFilter = new Filter() {
+
+            @Override
+            public CharSequence convertResultToString(Object result){
+                return ((Empresa)result).getNombre();
+            }
+
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                FilterResults filterResults = new FilterResults();
+
+                if (constraint != null){
+                    suggestions.clear();
+                    for (Empresa e:empresaList) {
+                        if (e.getNombre().toLowerCase().contains(constraint.toString().toLowerCase())){
+                            suggestions.add(e);
+                        }
+                    }
+                    filterResults.values = suggestions;
+                    filterResults.count = suggestions.size();
+                }
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                List<Empresa> listaFiltrada = (ArrayList<Empresa>)filterResults.values;
+
+                if (filterResults != null && filterResults.count > 0){
+                    listadoEmpresas.clear();
+                    listadoEmpresas.addAll(listaFiltrada);
+                    notifyDataSetChanged();
+                }
+            }
+        };
     }
 
     class ViewHolderTecnologica{
@@ -239,5 +344,25 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         public void setCnae(TextView cnae) {
             this.cnae = cnae;
         }
+    }
+
+    class ViewHolderNombreFiltro {
+        //Atributos
+        private TextView nombre;
+
+        //Constructor
+        public ViewHolderNombreFiltro(TextView nombre) {
+            this.nombre = nombre;
+        }
+
+        //Getters and setters
+        public TextView getNombre() {
+            return nombre;
+        }
+
+        public void setNombre(TextView nombre) {
+            this.nombre = nombre;
+        }
+
     }
 }

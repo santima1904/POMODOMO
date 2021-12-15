@@ -17,31 +17,28 @@
             android:id="@+id/nombre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="150dp"
+            android:layout_marginTop="60dp"
+            android:maxWidth="200dp"
             android:text="nombre"
-            android:textSize="35dp"
+            android:textSize="25dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintHorizontal_bias="0.482"
+            app:layout_constraintStart_toEndOf="@+id/logoEmpresa"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.394" />
 
         <ImageView
             android:id="@+id/logoEmpresa"
             android:layout_width="150dp"
             android:layout_height="150dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="30dp"
             android:src="@drawable/nofoto"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/nombre"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginTop="5dp"
-            android:background="@color/black"
-            app:layout_constraintTop_toBottomOf="@+id/logoEmpresa"
-            tools:layout_editor_absoluteX="12dp" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.231" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -63,6 +60,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/web"
                 android:layout_marginEnd="10dp"
+                android:layout_marginStart="15dp"
                 android:textSize="20dp"/>
 
             <TextView
@@ -85,6 +83,7 @@
                 android:layout_height="wrap_content"
                 android:text="Localización:"
                 android:layout_marginEnd="10dp"
+                android:layout_marginStart="15dp"
                 android:textSize="20dp"/>
 
             <TextView
@@ -107,6 +106,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/mail"
                 android:layout_marginEnd="10dp"
+                android:layout_marginStart="15dp"
                 android:textSize="20dp"/>
 
             <TextView
@@ -129,6 +129,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/direcci_n"
                 android:layout_marginEnd="10dp"
+                android:layout_marginStart="15dp"
                 android:textSize="20dp" />
 
             <EditText
@@ -151,6 +152,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/tel_fono"
                 android:layout_marginEnd="10dp"
+                android:layout_marginStart="15dp"
                 android:textSize="20dp" />
 
             <EditText
@@ -167,6 +169,7 @@
             android:id="@+id/personasContactos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
             android:text="Personas de contacto"/>
 
         <androidx.constraintlayout.widget.Guideline

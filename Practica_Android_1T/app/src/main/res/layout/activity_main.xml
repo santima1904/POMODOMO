@@ -22,11 +22,12 @@
 
     <AutoCompleteTextView
         android:id="@+id/editFiltro"
-        android:layout_width="150dp"
-        android:layout_height="20dp"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:background="@drawable/edittextbackground"
+        android:background="@color/background"
         android:maxWidth="100dp"
+        android:completionThreshold="0"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
