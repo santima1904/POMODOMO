@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         autocompletex = findViewById(R.id.editFiltro);
         autocompletex.setOnItemClickListener(this);
         autocompletex.setAdapter(adapterFiltrar);
-
     }
 
     @Override
@@ -83,7 +82,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         @Override
         public int getViewTypeCount (){
-
             return 2;
         }
 

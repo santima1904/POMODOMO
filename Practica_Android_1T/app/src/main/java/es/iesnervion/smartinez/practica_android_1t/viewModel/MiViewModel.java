@@ -49,6 +49,7 @@ public class MiViewModel extends ViewModel {
         listaEmpresas.add(new EmpresaTecnologica("Synergia Soluciones Tecnologicas", R.drawable.synergia, "https://www.synergiasoluciones.es/", "contacto@synergiasoluciones.es",
                 "37.308670917533384, -5.9413008883907406","C/ Fortuna, 1, Edificio Nuevo Tixe Oficina 6", " 902930363", crearListadoPersonasContacto()));
         listaEmpresas.add(new EmpresaNoTecnologica("Lidl", "034"));
+        listaEmpresas.add(new EmpresaNoTecnologica("Sabores de la Tierra", "034"));
         listaEmpresas.add(new EmpresaNoTecnologica("ToyRus", "058"));
         listaEmpresas.add(new EmpresaNoTecnologica("Cruzcampo", "018"));
         listaEmpresas.add(new EmpresaNoTecnologica("Game", "065"));
