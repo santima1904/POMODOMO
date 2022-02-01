@@ -17,31 +17,30 @@ public class PersonaAdapter extends RecyclerView.Adapter<PersonaAdapter.PersonaV
     }
 
     class PersonaViewHolder extends RecyclerView.ViewHolder{
-        View view;
         TextView nombre;
         TextView apellidos;
 
         public PersonaViewHolder(View itemView) {
             super(itemView);
-            nombre = view.findViewById(R.id.nombreLista);
-            apellidos = view.findViewById(R.id.apellidosLista);
+            nombre = itemView.findViewById(R.id.nombreLista);
+            apellidos = itemView.findViewById(R.id.apellidosLista);
         }
     }
 
     @Override
     public PersonaViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.personalayout, parent, false);
 
-        return new PersonaViewHolder(inflater.inflate(R.layout.personalayout, parent, false));
+        return new PersonaViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(PersonaViewHolder holder, int position) {
         Persona persona = listadoPersona.get(position);
 
-        holder.nombre.setText(listadoPersona.get(position).getNombre());
-        holder.apellidos.setText(listadoPersona.get(position).getApellidos());
+        holder.nombre.setText(persona.getNombre());
+        holder.apellidos.setText(persona.getApellidos());
     }
 
     @Override

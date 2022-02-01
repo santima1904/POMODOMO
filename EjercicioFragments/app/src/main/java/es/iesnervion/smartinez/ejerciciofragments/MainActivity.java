@@ -12,14 +12,5 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        View contenedorGeneral = findViewById(R.id.fragmentInicial);
-
-        if (contenedorGeneral!=null){
-            ListFragment frag = new ListFragment();
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.fragmentInicial,frag)
-                    .addToBackStack(null)
-                    .commit();
-        }
     }
 }

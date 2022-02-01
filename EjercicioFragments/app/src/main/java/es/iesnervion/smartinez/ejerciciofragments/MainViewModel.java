@@ -13,7 +13,6 @@ public class MainViewModel extends ViewModel {
 
     public MainViewModel() {
         rellenarListado();
-
     }
 
     private void rellenarListado(){
