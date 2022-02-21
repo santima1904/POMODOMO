@@ -1,10 +1,8 @@
 package es.iesnervion.smartinez.ejerciciofragments;
 
 import androidx.lifecycle.ViewModel;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import es.iesnervion.smartinez.ejerciciofragments.modelo.Persona;
 
 public class MainViewModel extends ViewModel {
