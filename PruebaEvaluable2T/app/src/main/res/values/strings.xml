@@ -2,4 +2,6 @@
     <string name="app_name">PruebaEvaluable2T</string>
     <string name="bienvenido">Bienvenido!</string>
     <string name="sign_in">Sign in</string>
+    <string name="anhadir">Add</string>
+    <string name="ver_detalles">View details</string>
 </resources>

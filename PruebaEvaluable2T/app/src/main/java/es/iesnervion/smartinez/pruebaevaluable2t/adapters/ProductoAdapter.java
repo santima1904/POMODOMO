@@ -4,6 +4,7 @@ import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,31 +24,33 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
 
 
     class ProductoViewHolder extends RecyclerView.ViewHolder{
-        Image imagen;
+        ImageView imagen;
         TextView nombre;
         TextView precio;
 
         public ProductoViewHolder(View itemView) {
             super(itemView);
-            nombre = itemView.findViewById(R.id.nombreLista);
-            apellidos = itemView.findViewById(R.id.apellidosLista);
+            imagen = itemView.findViewById(R.id.producto_image);
+            nombre = itemView.findViewById(R.id.producto_nombre);
+            precio = itemView.findViewById(R.id.producto_precio);
         }
     }
 
     @Override
     public ProductoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.personalayout, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.producto_layout, parent, false);
 
         return new ProductoViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(ProductoViewHolder holder, int position) {
-        Producto persona = listadoPersona.get(position);
+        Producto producto = listadoProducto.get(position);
 
-        holder.nombre.setText(persona.getNombre());
-        holder.apellidos.setText(persona.getApellidos());
+        holder.imagen.setImageResource(producto.getImage());
+        holder.nombre.setText(producto.getNombre());
+        holder.precio.setText(""+producto.getPrecioUnitario()+"€");
     }
 
     @Override
