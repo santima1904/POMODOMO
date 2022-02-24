@@ -6,14 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".activities.ListadoProductosActivity">
 
+    <SearchView
+        android:id="@+id/listado_productos_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        app:layout_constraintBottom_toTopOf="@id/listado_productos_recyclerview"
+        app:layout_constraintStart_toStartOf="@id/guideline2"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listado_productos_recyclerview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="10dp"
         app:layout_constraintBottom_toTopOf="@+id/listado_productos_linear"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guideline2"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
@@ -45,13 +53,12 @@
 
     <LinearLayout
         android:id="@+id/listado_productos_linear"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_marginBottom="20dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="@id/guideline2">
 
         <Button
             android:id="@+id/listado_productos_linear_button_anhadir"
@@ -67,5 +74,12 @@
             android:text="@string/ver_detalles" />
 
     </LinearLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="41dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

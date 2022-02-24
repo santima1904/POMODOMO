@@ -6,10 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.recyclerview.widget.RecyclerView;
-
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import es.iesnervion.smartinez.pruebaevaluable2t.R;
 import es.iesnervion.smartinez.pruebaevaluable2t.models.Producto;
@@ -17,9 +17,12 @@ import es.iesnervion.smartinez.pruebaevaluable2t.models.Producto;
 public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ProductoViewHolder> {
 
     List<Producto> listadoProducto;
+    List<Producto> listadoProductosOriginal;
 
     public ProductoAdapter(List<Producto> listadoProducto) {
         this.listadoProducto = listadoProducto;
+        listadoProductosOriginal = new ArrayList<>();
+        listadoProductosOriginal.addAll(listadoProducto);
     }
 
 
@@ -51,6 +54,30 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
         holder.imagen.setImageResource(producto.getImage());
         holder.nombre.setText(producto.getNombre());
         holder.precio.setText(""+producto.getPrecioUnitario()+"€");
+    }
+
+    public void filtrado(String txtbuscar){
+        if (txtbuscar.length() == 0){
+            listadoProducto.clear();
+            listadoProducto.addAll(listadoProductosOriginal);
+        }else{
+
+            List<Producto> collection = null;
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+                collection = listadoProducto.stream()
+                                            .filter(i -> i.getNombre().toLowerCase().contains(txtbuscar.toLowerCase()))
+                                            .collect(Collectors.toList());
+            listadoProducto.clear();
+                listadoProducto.addAll(collection);
+            }else{
+                for (Producto p:listadoProductosOriginal) {
+                    if (p.getNombre().toLowerCase().contains(txtbuscar.toLowerCase())){
+                        listadoProducto.add(p);
+                    }
+                }
+            }
+        }
+        notifyDataSetChanged();
     }
 
     @Override
