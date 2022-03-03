@@ -12,6 +12,7 @@ import es.iesnervion.smartinez.pruebaevaluable2t.models.Producto;
 public class MainViewModel extends ViewModel {
 
     Persona usuario;
+    Producto productoSeleccionado;
     List<Producto> listadoProductosCompleto;
 
     public MainViewModel() {
@@ -21,6 +22,10 @@ public class MainViewModel extends ViewModel {
 
     public List<Producto> getListadoProductosCompleto() {
         return listadoProductosCompleto;
+    }
+
+    public Producto getProductoSeleccionado() {
+        return productoSeleccionado;
     }
 
     private void generarListado(){

@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PruebaEvaluable2T" >
         <activity
+            android:name=".activities.DetallesActivity"
+            android:exported="true" />
+        <activity
             android:name=".activities.ListadoProductosActivity"
             android:exported="true" />
         <activity

@@ -53,7 +53,7 @@ public class SpinnerAdapter extends BaseAdapter implements android.widget.Spinne
         if (row == null){
             LayoutInflater inflater = (LayoutInflater) contextAdapter.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             row = inflater.inflate(android.R.layout.simple_spinner_item, parent, false);
-            holder = new ViewHolder((TextView) row.findViewById(android.R.id.text1));
+            holder = new ViewHolder((TextView) row.findViewById(android.R.id.text1)); //Dios esta aqui 643927480
             row.setTag(holder);
         }else{
             holder = (ViewHolder) row.getTag();

@@ -21,12 +21,11 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
 
     public ProductoAdapter(List<Producto> listadoProducto) {
         this.listadoProducto = listadoProducto;
-        listadoProductosOriginal = new ArrayList<>();
-        listadoProductosOriginal.addAll(listadoProducto);
+        listadoProductosOriginal = new ArrayList<>(listadoProducto);
+
     }
 
-
-    class ProductoViewHolder extends RecyclerView.ViewHolder{
+    class ProductoViewHolder extends RecyclerView.ViewHolder{ //Dios esta contigo
         ImageView imagen;
         TextView nombre;
         TextView precio;
@@ -56,28 +55,18 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
         holder.precio.setText(""+producto.getPrecioUnitario()+"€");
     }
 
-    public void filtrado(String txtbuscar){
-        if (txtbuscar.length() == 0){
-            listadoProducto.clear();
-            listadoProducto.addAll(listadoProductosOriginal);
+    public void filtrarProductos(String texto) {
+        if(texto.length() == 0){
+            listadoProducto = new ArrayList<>(listadoProductosOriginal);//listaProductosAux tiene todos los productos
         }else{
-
-            List<Producto> collection = null;
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-                collection = listadoProducto.stream()
-                                            .filter(i -> i.getNombre().toLowerCase().contains(txtbuscar.toLowerCase()))
-                                            .collect(Collectors.toList());
             listadoProducto.clear();
-                listadoProducto.addAll(collection);
-            }else{
-                for (Producto p:listadoProductosOriginal) {
-                    if (p.getNombre().toLowerCase().contains(txtbuscar.toLowerCase())){
-                        listadoProducto.add(p);
-                    }
+            for(Producto producto : listadoProductosOriginal){
+                if(producto.getNombre().toLowerCase().contains(((CharSequence) texto).toString().toLowerCase()) //Dios esta contigo
+                        || String.valueOf(producto.getPrecioUnitario()).contains(((CharSequence) texto).toString().toLowerCase())){
+                    listadoProducto.add(producto);
                 }
             }
         }
-        notifyDataSetChanged();
     }
 
     @Override
