@@ -18,6 +18,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
 
     List<Producto> listadoProducto;
     List<Producto> listadoProductosOriginal;
+    private static ClickListener clickListener;
 
     public ProductoAdapter(List<Producto> listadoProducto) {
         this.listadoProducto = listadoProducto;
@@ -25,16 +26,28 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
 
     }
 
-    class ProductoViewHolder extends RecyclerView.ViewHolder{ //Dios esta contigo
+    public void setOnItemClickListener(ClickListener clickListener) {
+        ProductoAdapter.clickListener = clickListener;
+    }
+
+
+    class ProductoViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         ImageView imagen;
         TextView nombre;
         TextView precio;
 
         public ProductoViewHolder(View itemView) {
             super(itemView);
+
+            itemView.setOnClickListener(this);
             imagen = itemView.findViewById(R.id.producto_image);
             nombre = itemView.findViewById(R.id.producto_nombre);
             precio = itemView.findViewById(R.id.producto_precio);
+        }
+
+        @Override
+        public void onClick(View v) {
+            clickListener.onItemClick(getAdapterPosition(), v);
         }
     }
 
@@ -72,5 +85,9 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
     @Override
     public int getItemCount() {
         return listadoProducto.size();
+    }
+
+    public interface ClickListener {
+        void onItemClick(int position, View v);
     }
 }

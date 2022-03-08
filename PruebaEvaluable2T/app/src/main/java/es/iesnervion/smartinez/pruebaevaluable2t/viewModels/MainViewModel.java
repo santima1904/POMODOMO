@@ -14,10 +14,15 @@ public class MainViewModel extends ViewModel {
     Persona usuario;
     Producto productoSeleccionado;
     List<Producto> listadoProductosCompleto;
+    double total;
+    List<Producto> carrito;
 
     public MainViewModel() {
-        this.usuario = new Persona("Rafael", "Leao", "santima1904@gmail.com", "usuario", "contraseña");
+        this.usuario = new Persona("A", "a", "santima1904@gmail.com", "usuario", "contraseña");
+        productoSeleccionado = new Producto();
         generarListado();
+        total = 0;
+        carrito = new ArrayList<>();
     }
 
     public List<Producto> getListadoProductosCompleto() {
@@ -26,6 +31,26 @@ public class MainViewModel extends ViewModel {
 
     public Producto getProductoSeleccionado() {
         return productoSeleccionado;
+    }
+
+    public void setProductoSeleccionado(Producto productoSeleccionado) {
+        this.productoSeleccionado = productoSeleccionado;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
+    public List<Producto> getCarrito() {
+        return carrito;
+    }
+
+    public void setCarrito(List<Producto> carrito) {
+        this.carrito = carrito;
     }
 
     private void generarListado(){

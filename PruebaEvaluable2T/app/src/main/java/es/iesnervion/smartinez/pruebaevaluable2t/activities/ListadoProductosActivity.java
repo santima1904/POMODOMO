@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.SearchView;
@@ -42,6 +44,11 @@ public class ListadoProductosActivity extends AppCompatActivity implements Searc
 
         spinnerAdapter = new SpinnerAdapter(this);
         recycler_adapter = new ProductoAdapter(miViewModel.getListadoProductosCompleto());
+        recycler_adapter.setOnItemClickListener((position, v) -> {
+            miViewModel.setProductoSeleccionado(miViewModel.getListadoProductosCompleto().get(position));
+            recycler_adapter.notifyItemChanged(position);
+        });
+
         listadoProductos.setLayoutManager(new LinearLayoutManager(this));
         listadoProductos.setAdapter(recycler_adapter);
         filtrador.setAdapter(spinnerAdapter);
@@ -64,15 +71,22 @@ public class ListadoProductosActivity extends AppCompatActivity implements Searc
 
     @Override
     public void onClick(View v) {
+        Intent intent;
+
         switch (v.getId()){
             case R.id.lista_productos_btn_detalles:
-                Intent intent = new Intent(ListadoProductosActivity.this, DetallesActivity.class);
+                 intent = new Intent(ListadoProductosActivity.this, DetallesActivity.class);
                 intent.putExtra("producto", miViewModel.getProductoSeleccionado());
                 startActivity(intent);
                 break;
 
             case R.id.lista_productos_btn_anhadir:
-
+                intent = new Intent(ListadoProductosActivity.this, ShoppingCartActivity.class);
+                intent.putExtra("carrito", miViewModel.getProductoSeleccionado());
+                startActivity(intent);
+                break;
         }
     }
+
+
 }
