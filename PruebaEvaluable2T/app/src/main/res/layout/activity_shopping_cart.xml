@@ -11,12 +11,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginBottom="20dp"
+        android:textSize="40dp"
         android:text="Carrito:"
-        app:layout_constraintBottom_toTopOf="@+id/listado_productos_recyclerview"
+        app:layout_constraintBottom_toTopOf="@+id/lista_carrito"
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listado_productos_recyclerview"
+        android:id="@+id/lista_carrito"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -32,18 +33,27 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listado_productos_recyclerview"
+        app:layout_constraintTop_toBottomOf="@+id/lista_carrito"
         app:layout_constraintVertical_bias="0.16000003">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="30dp"
             android:text="Total: " />
 
         <TextView
             android:id="@+id/total"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textSize="30dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/aceptar"
+            android:text="Aceptar"
+            android:layout_marginStart="100dp"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

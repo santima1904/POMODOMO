@@ -12,11 +12,11 @@ public class Persona {
     //Constructor
     //Por defecto
     public Persona() {
-        this.nombre = " ";
-        this.apellidos = " ";
-        this.email = " ";
-        this.usuario = " ";
-        this.contrasenha = " ";
+        this.nombre = "Santiago";
+        this.apellidos = "Martínez";
+        this.email = "santima1904@gmail.com";
+        this.usuario = "usuario";
+        this.contrasenha = "123";
     }
 
     //Por parametros
@@ -51,5 +51,21 @@ public class Persona {
 
     public String getContrasenha() {
         return contrasenha;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public void setContrasenha(String contrasenha) {
+        this.contrasenha = contrasenha;
     }
 }

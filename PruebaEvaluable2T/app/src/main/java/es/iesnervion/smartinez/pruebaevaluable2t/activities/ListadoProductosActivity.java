@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -53,6 +54,7 @@ public class ListadoProductosActivity extends AppCompatActivity implements Searc
         listadoProductos.setAdapter(recycler_adapter);
         filtrador.setAdapter(spinnerAdapter);
         txtbuscar.setOnQueryTextListener(this);
+        shopping.setOnClickListener(this);
         details.setOnClickListener(this);
         add.setOnClickListener(this);
     }
@@ -75,14 +77,18 @@ public class ListadoProductosActivity extends AppCompatActivity implements Searc
 
         switch (v.getId()){
             case R.id.lista_productos_btn_detalles:
-                 intent = new Intent(ListadoProductosActivity.this, DetallesActivity.class);
+                intent = new Intent(ListadoProductosActivity.this, DetallesActivity.class);
                 intent.putExtra("producto", miViewModel.getProductoSeleccionado());
                 startActivity(intent);
                 break;
 
             case R.id.lista_productos_btn_anhadir:
+                miViewModel.agregarCarrito(miViewModel.getProductoSeleccionado());
+                break;
+
+            case R.id.listado_productos_shopping_cart:
                 intent = new Intent(ListadoProductosActivity.this, ShoppingCartActivity.class);
-                intent.putExtra("carrito", miViewModel.getProductoSeleccionado());
+                intent.putExtra("carrito", miViewModel.getCarrito());
                 startActivity(intent);
                 break;
         }

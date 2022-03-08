@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import es.iesnervion.smartinez.pruebaevaluable2t.R;
+import es.iesnervion.smartinez.pruebaevaluable2t.models.Carrito;
 import es.iesnervion.smartinez.pruebaevaluable2t.models.Persona;
 import es.iesnervion.smartinez.pruebaevaluable2t.models.Producto;
 
@@ -14,15 +15,22 @@ public class MainViewModel extends ViewModel {
     Persona usuario;
     Producto productoSeleccionado;
     List<Producto> listadoProductosCompleto;
-    double total;
-    List<Producto> carrito;
+    Carrito carrito;
+
 
     public MainViewModel() {
         this.usuario = new Persona("A", "a", "santima1904@gmail.com", "usuario", "contraseña");
         productoSeleccionado = new Producto();
         generarListado();
-        total = 0;
-        carrito = new ArrayList<>();
+        carrito = new Carrito();
+    }
+
+    public void agregarCarrito(Producto producto){
+        carrito.agregarCarrito(producto);
+    }
+
+    public Persona getUsuario() {
+        return usuario;
     }
 
     public List<Producto> getListadoProductosCompleto() {
@@ -37,19 +45,11 @@ public class MainViewModel extends ViewModel {
         this.productoSeleccionado = productoSeleccionado;
     }
 
-    public double getTotal() {
-        return total;
-    }
-
-    public void setTotal(double total) {
-        this.total = total;
-    }
-
-    public List<Producto> getCarrito() {
+    public Carrito getCarrito() {
         return carrito;
     }
 
-    public void setCarrito(List<Producto> carrito) {
+    public void setCarrito(Carrito carrito) {
         this.carrito = carrito;
     }
 
