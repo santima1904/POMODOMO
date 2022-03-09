@@ -27,6 +27,7 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
     ProductoAdapter recycler_adapter;
     Button aceptar;
     MainViewModel miViewModel;
+    Producto productoCarrito;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +35,13 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
         setContentView(R.layout.activity_shopping_cart);
         Bundle bundle = getIntent().getExtras();
         carrito = (Carrito) bundle.get("carrito");
+        productoCarrito = (Producto) bundle.get("producto");
+        if (carrito == null){
+            carrito = new Carrito();
+        }
+        if (productoCarrito != null){
+            carrito.agregarCarrito(productoCarrito);
+        }
         miViewModel = new ViewModelProvider(this).get(MainViewModel.class);
 
         listadoProductos = findViewById(R.id.lista_carrito);

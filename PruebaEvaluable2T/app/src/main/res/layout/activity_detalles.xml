@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.DetallesActivity">
+    tools:context=".activities.DetallesActivity"
+    android:background="@color/background">
 
     <ImageButton
         android:id="@+id/detalles_shopping_cart"
@@ -51,12 +52,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nombre: " />
+                android:text="Nombre: "
+                android:textSize="20dp"/>
 
             <TextView
                 android:id="@+id/detalles_txt_nombre"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textSize="20dp"/>
 
         </LinearLayout>
 
@@ -68,12 +71,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Precio unitario: " />
+                android:text="Precio unitario: "
+                android:textSize="20dp"/>
 
             <TextView
                 android:id="@+id/detalles_txt_precio_uni"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textSize="20dp"/>
 
         </LinearLayout>
 
@@ -85,12 +90,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Precio por litro: " />
+                android:text="Precio por litro: "
+                android:textSize="20dp"/>
 
             <TextView
                 android:id="@+id/detalles_txt_precio_litro"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textSize="20dp"/>
 
         </LinearLayout>
 
@@ -102,12 +109,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cantidad: " />
+                android:text="Cantidad: "
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/detalles_txt_cantidad"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textSize="20dp" />
 
         </LinearLayout>
 

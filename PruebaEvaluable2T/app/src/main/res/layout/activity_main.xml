@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.MainActivity">
+    tools:context=".activities.MainActivity"
+    android:background="@color/background">
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -49,8 +50,8 @@
     </LinearLayout>
 
     <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
         android:id="@+id/cardview"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -61,7 +62,8 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_margin="20dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -110,6 +112,7 @@
                 <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="15dp"
                     android:id="@+id/correo_usuario" />
 
             </LinearLayout>
@@ -123,12 +126,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/guardar"
+                    android:layout_margin="20dp"
                     android:text="Save"/>
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/continuar"
+                    android:layout_margin="20dp"
                     android:text="Go on"/>
 
             </LinearLayout>

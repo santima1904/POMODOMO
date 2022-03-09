@@ -51,16 +51,10 @@ public class DetallesActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onClick(View v) {
-//        switch (v.getId()){
-//            case R.id.detalles_btn_anhadir:
-//                miViewModel.agregarCarrito(miViewModel.getProductoSeleccionado());
-//                break;
-//
-//            case R.id.detalles_shopping_cart:
-//                intent = new Intent(DetallesActivity.this, ShoppingCartActivity.class);
-//                intent.putExtra("carrito", miViewModel.getCarrito());
-//                startActivity(intent);
-//                break;
-//        }
+        if (v.getId() == R.id.detalles_shopping_cart) {
+            intent = new Intent(DetallesActivity.this, ShoppingCartActivity.class);
+            intent.putExtra("producto",productoSeleccionado);
+            startActivity(intent);
+        }
     }
 }
