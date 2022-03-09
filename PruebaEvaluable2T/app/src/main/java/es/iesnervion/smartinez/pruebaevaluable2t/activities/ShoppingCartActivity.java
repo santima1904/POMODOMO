@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import es.iesnervion.smartinez.pruebaevaluable2t.R;
@@ -26,7 +27,6 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
     ProductoAdapter recycler_adapter;
     Button aceptar;
     MainViewModel miViewModel;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +49,7 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
 
     @Override
     public void onClick(View view) {
+
         String[] addresses = new String[1];
         addresses[0] = miViewModel.getUsuario().getEmail();
 

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "744184279591",
+    "project_id": "droguedam",
+    "storage_bucket": "droguedam.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:744184279591:android:199bb06cc5611484ca5402",
+        "android_client_info": {
+          "package_name": "com.guillermo.droguedam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "744184279591-eo1tmgrkuettrtcmvvvqpqvj4b18lvm5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoXDyZlTj7MJItbyY-KPeYRPPgSn52m7w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "744184279591-eo1tmgrkuettrtcmvvvqpqvj4b18lvm5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

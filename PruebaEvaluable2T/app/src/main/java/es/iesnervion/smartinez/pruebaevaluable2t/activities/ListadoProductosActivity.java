@@ -35,7 +35,7 @@ public class ListadoProductosActivity extends AppCompatActivity implements Searc
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listado_productos);
-        miViewModel = new ViewModelProvider(this).get(MainViewModel.class);
+        miViewModel = new ViewModelProvider(this).get(MainViewModel.class);ºººººººººººººººººººººººººººººººººººººººººººººººººººººººººººººººººººººººººººººººººººººººººººººººººººººº
         listadoProductos = findViewById(R.id.listado_productos_recyclerview);
         filtrador = findViewById(R.id.listado_productos_spinner);
         add = findViewById(R.id.lista_productos_btn_anhadir);
